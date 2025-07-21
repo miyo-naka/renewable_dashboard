@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
-import Sidebar from "./components/Sidebar";
-import LineChartWidget from "./components/LineChartWidget";
-import TypeLineChartWidget from "./components/TypeLineChartWidget";
+import Sidebar from "../components/Sidebar";
+import LineChartWidget from "../components/LineChartWidget";
+import TypeLineChartWidget from "../components/TypeLineChartWidget";
 
 type RawData = {
   year: string;
