@@ -109,6 +109,11 @@ export default function TypeLineChartWidget() {
             />
           ))}
         </LineChart>
+        <p className="text-xs text-gray-500 text-right">
+          Data source: Modern renewable electricity generation by source -
+          Energy Institute - Statistical Review of World Energy (2025) - with
+          major processing by Our World in Data
+        </p>
       </ResponsiveContainer>
     </div>
   );

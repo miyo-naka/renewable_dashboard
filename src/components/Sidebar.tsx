@@ -8,7 +8,7 @@ export default function Sidebar() {
         <a href={"/"} className="hover:text-blue-400">
           Dashboard
         </a>
-        <a href="#" className="hover:text-blue-400">
+        <a href={"/breakdown"} className="hover:text-blue-400">
           Break down
         </a>
         <a href={"/about"} className="hover:text-blue-400">

@@ -73,7 +73,9 @@ export default function LineChartWidget() {
 
   return (
     <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
-      <h2 className="text-xl font-bold mb-4">再エネ比率の年次推移（地域別）</h2>
+      <h2 className="text-xl font-bold mb-4">
+        地域別再エネ比率の年次推移(消費量)
+      </h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -92,6 +94,11 @@ export default function LineChartWidget() {
             />
           ))}
         </LineChart>
+        <p className="text-xs text-gray-500 text-right">
+          Data source: Share of primary energy consumption from renewable
+          sources - Energy Institute - Statistical Review of World Energy (2025)
+          - with major processing by Our World in Data
+        </p>
       </ResponsiveContainer>
     </div>
   );
