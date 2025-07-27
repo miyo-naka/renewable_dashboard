@@ -91,6 +91,11 @@ export default function BreakdownPage() {
             </select>
           </div>
           <StackedBarChartWidget data={regionData} />
+          <p className="text-xs text-gray-500 text-right">
+            Data source: Share of electricity production from renewables - Ember
+            (2025); Energy Institute - Statistical Review of World Energy (2025)
+            – with major processing by Our World in Data
+          </p>
         </div>
 
         <div className="w-[65%] bg-white rounded-lg shadow p-4 flex flex-col">
@@ -111,13 +116,18 @@ export default function BreakdownPage() {
               ))}
             </select>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-2">
             {yearData.map((d) => (
               <div key={d.country_area} className="min-w-[180px]">
                 <PieChartWidget data={d} />
               </div>
             ))}
           </div>
+          <p className="text-xs text-gray-500 text-right">
+            Data source: Share of electricity production from renewables - Ember
+            (2025); Energy Institute - Statistical Review of World Energy (2025)
+            – with major processing by Our World in Data
+          </p>
         </div>
       </main>
     </div>
