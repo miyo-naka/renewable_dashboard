@@ -11,12 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-type RawData = {
-  year: string;
-  country_area: string;
-  renewable_share: string;
-};
+import { LineChartData } from "@/type/linechartdata";
 
 type DataPoint = {
   year: string;
@@ -50,7 +45,7 @@ export default function LineChartWidget() {
     fetch("/data/modified_renewable-share-energy.csv")
       .then((res) => res.text())
       .then((csv) => {
-        const parsed = Papa.parse<RawData>(csv, {
+        const parsed = Papa.parse<LineChartData>(csv, {
           header: true,
           skipEmptyLines: true,
         });
@@ -67,9 +62,12 @@ export default function LineChartWidget() {
         const sorted = Object.values(dataByYear).sort(
           (a, b) => parseInt(a.year) - parseInt(b.year)
         );
+        console.log("LinechartData", sorted);
         setChartData(sorted as DataPoint[]);
       });
   }, []);
+
+  console.log(chartData[0]);
 
   return (
     <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
@@ -94,12 +92,12 @@ export default function LineChartWidget() {
             />
           ))}
         </LineChart>
-        <p className="text-xs text-gray-500 text-right">
-          Data source: Share of primary energy consumption from renewable
-          sources - Energy Institute - Statistical Review of World Energy (2025)
-          - with major processing by Our World in Data
-        </p>
       </ResponsiveContainer>
+      <p className="text-xs text-gray-500 text-right">
+        Data source: Share of primary energy consumption from renewable sources
+        - Energy Institute - Statistical Review of World Energy (2025) - with
+        major processing by Our World in Data
+      </p>
     </div>
   );
 }

@@ -4,43 +4,26 @@ import Papa from "papaparse";
 import StackedBarChartWidget from "../../components/StackedBarChartWidget";
 import PieChartWidget from "../../components/PieChartWidget";
 import Sidebar from "@/components/Sidebar";
-
-const displayedTypes = ["hydro", "solar", "wind", "other"];
-
-type RawData = {
-  country_area: string;
-  Year: string;
-  total: string;
-  hydro: string;
-  solar: string;
-  wind: string;
-  other: string;
-};
-
-type DataPoint = {
-  country_area: string;
-  Year: string;
-  [key: string]: string | number;
-};
+import { BreakDownData } from "@/type/breakdowndata";
 
 export default function BreakdownPage() {
-  const [data, setData] = useState<DataPoint[]>([]);
+  const [data, setData] = useState<BreakDownData[]>([]);
   const [regions, setRegions] = useState<string[]>([]);
   const [years, setYears] = useState<string[]>([]);
   const [selectedRegion, setSelectedRegion] = useState("World");
   const [selectedYear, setSelectedYear] = useState("");
-  const [regionData, setRegionData] = useState<DataPoint[]>([]);
-  const [yearData, setYearData] = useState<DataPoint[]>([]);
+  const [regionData, setRegionData] = useState<BreakDownData[]>([]);
+  const [yearData, setYearData] = useState<BreakDownData[]>([]);
 
   useEffect(() => {
     fetch("/data/modified_renewable-share-electlicity_withtype.csv")
       .then((res) => res.text())
       .then((csv) => {
-        const parsed = Papa.parse<RawData>(csv, {
+        const parsed = Papa.parse<BreakDownData>(csv, {
           header: true,
           skipEmptyLines: true,
         });
-        setData(parsed.data as DataPoint[]);
+        setData(parsed.data);
         const regionSet = new Set<string>();
         const yearSet = new Set<string>();
         parsed.data.forEach((row) => {
@@ -52,7 +35,7 @@ export default function BreakdownPage() {
           (a, b) => parseInt(a) - parseInt(b)
         );
         setYears(sortedYears);
-        setSelectedYear(sortedYears[sortedYears.length - 1]); // 最新年をデフォルト
+        setSelectedYear(sortedYears[sortedYears.length - 1]);
       });
   }, []);
 

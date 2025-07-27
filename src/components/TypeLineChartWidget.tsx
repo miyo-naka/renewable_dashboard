@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { TypeLineChartData } from "@/type/typelinechartdata";
 
 const typeColors: { [type: string]: string } = {
   other: "#1f77b4",
@@ -20,15 +21,6 @@ const typeColors: { [type: string]: string } = {
 };
 
 const displayedTypes = ["other", "solar", "wind", "hydro"];
-
-type RawTypeData = {
-  country_area: string;
-  year: string;
-  other: string;
-  solar: string;
-  wind: string;
-  hydro: string;
-};
 
 type DataPoint = {
   year: string;
@@ -44,7 +36,7 @@ export default function TypeLineChartWidget() {
     fetch("/data/modified_modern-renewable-energy-consumption.csv")
       .then((res) => res.text())
       .then((csv) => {
-        const parsed = Papa.parse<RawTypeData>(csv, {
+        const parsed = Papa.parse<TypeLineChartData>(csv, {
           header: true,
           skipEmptyLines: true,
         });
@@ -63,12 +55,15 @@ export default function TypeLineChartWidget() {
             dataByYear[year] = { year };
           }
           displayedTypes.forEach((type) => {
-            dataByYear[year][type] = parseFloat((row as any)[type] || "0");
+            dataByYear[year][type] = parseFloat(
+              (row[type as keyof TypeLineChartData] as string) || "0"
+            );
           });
         });
         const sorted = Object.values(dataByYear).sort(
           (a, b) => parseInt(a.year) - parseInt(b.year)
         );
+        console.log("TypeLinechartData", sorted);
         setChartData(sorted);
       });
   }, [selectedRegion]);
@@ -109,12 +104,12 @@ export default function TypeLineChartWidget() {
             />
           ))}
         </LineChart>
-        <p className="text-xs text-gray-500 text-right">
-          Data source: Modern renewable electricity generation by source -
-          Energy Institute - Statistical Review of World Energy (2025) - with
-          major processing by Our World in Data
-        </p>
       </ResponsiveContainer>
+      <p className="text-xs text-gray-500 text-right">
+        Data source: Modern renewable electricity generation by source - Energy
+        Institute - Statistical Review of World Energy (2025) - with major
+        processing by Our World in Data
+      </p>
     </div>
   );
 }
