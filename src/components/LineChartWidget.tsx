@@ -74,7 +74,7 @@ export default function LineChartWidget() {
   return (
     <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
       <h2 className="text-xl font-bold mb-4">
-        地域別再エネ比率の年次推移(消費量)
+        Share of primary energy consumption from renewable sources
       </h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData}>

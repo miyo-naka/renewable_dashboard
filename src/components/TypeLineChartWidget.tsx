@@ -77,7 +77,7 @@ export default function TypeLineChartWidget() {
     <div className="bg-white rounded-lg shadow p-4 h-full flex flex-col">
       <div className="flex gap-4 items-center">
         <h2 className="text-xl font-bold mb-4">
-          タイプ別再エネ生成量の年次推移
+          Renewable electricity generation by source
         </h2>
         <select
           value={selectedRegion}

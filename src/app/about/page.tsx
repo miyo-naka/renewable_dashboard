@@ -20,12 +20,10 @@ export default function AboutPage() {
           solar, wind, hydro, and bioenergy.
         </p>
 
-        <p className="mb-4">
-          On the <strong>Home</strong> page, you can view:
-        </p>
+        <p className="mb-4">On the pages, you can view:</p>
 
         <ul className="list-disc list-inside mb-4">
-          <li>Trends in renewable energy share by region or country</li>
+          <li>Trends in renewable energy share by region</li>
           <li>Breakdowns by energy type (solar, wind, hydro, etc.)</li>
         </ul>
 
@@ -36,10 +34,7 @@ export default function AboutPage() {
           explore data visualization for environmental awareness.
         </p>
 
-        <p>
-          If you have feedback or suggestions, feel free to reach out. Thank you
-          for visiting!
-        </p>
+        <p>Thank you for visiting!</p>
       </div>
     </div>
   );

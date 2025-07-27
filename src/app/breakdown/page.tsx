@@ -74,10 +74,10 @@ export default function BreakdownPage() {
       <main className="flex flex-1 p-2 gap-2">
         <div className="w-[35%] h-full bg-white rounded-lg shadow p-4 flex flex-col">
           <h2 className="text-lg font-bold mb-2">
-            再エネタイプ別割合（年次推移・積み上げ棒グラフ）
+            Changes in renewable energy percentage by region
           </h2>
           <div className="mb-2">
-            <label className="text-sm mr-2">地域</label>
+            <label className="text-sm mr-2">region</label>
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
@@ -94,9 +94,11 @@ export default function BreakdownPage() {
         </div>
 
         <div className="w-[65%] bg-white rounded-lg shadow p-4 flex flex-col">
-          <h2 className="text-lg font-bold mb-2">再エネタイプ別割合</h2>
+          <h2 className="text-lg font-bold mb-2">
+            Proportion of renewable energy types in each region
+          </h2>
           <div className="mb-2">
-            <label className="text-sm mr-2">年 </label>
+            <label className="text-sm mr-2">year</label>
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
