@@ -1,4 +1,5 @@
 "use client";
+import { BreakDownData } from "@/type/breakdowndata";
 import {
   BarChart,
   Bar,
@@ -20,7 +21,7 @@ const typeColors: { [type: string]: string } = {
 const displayedTypes = ["hydro", "solar", "wind", "other"];
 
 type Props = {
-  data: any[];
+  data: BreakDownData[];
 };
 
 export default function StackedBarChartWidget({ data }: Props) {

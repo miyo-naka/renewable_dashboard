@@ -1,4 +1,5 @@
 "use client";
+import { BreakDownData } from "@/type/breakdowndata";
 import {
   PieChart,
   Pie,
@@ -18,13 +19,13 @@ const typeColors: { [type: string]: string } = {
 const displayedTypes = ["hydro", "solar", "wind", "other"];
 
 type Props = {
-  data: any;
+  data: BreakDownData;
 };
 
 export default function PieChartWidget({ data }: Props) {
   const pieData = displayedTypes.map((type) => ({
     name: type,
-    value: parseFloat(data[type] as string) || 0,
+    value: parseFloat(data[type as keyof BreakDownData] as string) || 0,
   }));
   return (
     <div className="bg-white rounded-lg shadow p-2 h-full flex flex-col">
