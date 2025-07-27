@@ -6,7 +6,7 @@ export default function Sidebar() {
       <div className="mb-8 text-2xl font-bold">Menu</div>
       <nav className="flex flex-col gap-4">
         <a href={"/"} className="hover:text-blue-400">
-          Dashboard
+          Top Page
         </a>
         <a href={"/breakdown"} className="hover:text-blue-400">
           Break down
